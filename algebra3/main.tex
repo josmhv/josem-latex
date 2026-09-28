@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[a4paper,
+            bindingoffset=0.2in,
+            left=1in,
+            right=1in,
+            top=1in,
+            bottom=1in,
+            footskip=.25in]{geometry}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewenvironment{proof}{{\bfseries Dem:}}
+
+\title{Ejercicios}
+\author{Jose Hernandez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Parcial 2}
+
+Sean \( G \) y \( G' \) grupos, y sea \( \psi  \colon G \to G' \). 
+
+Definiciones importantes:
+
+\begin{enumerate}
+    \item Si \( \psi \) es tal que
+        \[
+            \psi (ab) = \psi (a) \psi (b)
+        \] 
+        entonces \( \psi  \) es un homomorfismo.
+    \item Si \( \psi  \) es homomorfismo y ademas es inyectivo, entonces se llama monomorfismo.
+    \item Si \( \psi  \) es monomorfismo y ademas es sobreyectivo, entonces se llama isomorfismo.
+    \item Sea \( N \) subgrupo de \( G \). Se dice que \( N \) es un subgrupo normal de \( G \), si
+        \( a^{-1}Na \subseteq N \), para todo \( a \in G \). y lo denotamos por \( N \triangleleft G \)
+    \item Un grupo tal que no es abeliano, pero todos sus subgrupos son normales es llamado Grupo Hamiltoniano
+\end{enumerate}
+
+
+\begin{theorem}
+    Si \( \psi  \) es un homomorfismo, entonces
+
+    a) \( Ker(\psi ) \) es un subgrupo de \( G \)
+
+    b) Sea \( a \in G \), \( a^{-1}(Ker(\psi ))a \subseteq Ker(\psi ) \)
+\end{theorem}
+
+\begin{proof}  
+
+    a) Sean \( a,b \in  Ker(\psi) \), entonces, sabemos que \( \psi (a) = e' \) y \( \psi (b) = e' \).
+    Notemos que 
+    \begin{align*}
+        \psi (ab^-1) &= \psi (a)(\psi (b))^{-1} \\  
+                     &= e'(e')^{-1} \\
+                     &= e'
+    \end{align*}
+
+    Asi, \( Ker(\psi ) \) es un subgrupo de \( G \).
+
+    b) Sea \( x \in  a^{-1}(Ker(\psi ))a \), entonces, \( x = a^{-1}ba \) para algun \( b \in Ker(\psi)\),
+    queremos ver que \( \psi (x) = e' \).
+
+    \begin{align*}
+        \psi (x) &= \psi (a^{-1}ba) \\
+                 &= (\psi (a))^{-1}\psi (b)\psi (a) \\
+                 &= (\psi (a))^{-1} \cdot e' \cdot \psi (a) \tag{por \( b \in Ker(\psi ) \)} \\
+                 &= e'
+    \end{align*}
+
+    Asi, se obtiene el resultado buscado.
+    \( \hfill \blacksquare \)
+
+\end{proof}
+
+\begin{corollary}
+    Sea \( \psi  \) un homomorfismo. \( \psi  \) será un monomorfismo si, y solo si, \( Ker(\psi ) = \{e\}   \)
+\end{corollary}
+
+\begin{proof}
+    \vspace{3mm}
+    
+    \( (\implies) \)
+
+    Supongamos que \( \psi  \) es un monomorfismo.
+
+    Veamos que \( \{e\} \supseteq Ker(\psi)  \).
+
+    Sea \( a \in Ker(\psi) \), entonces 
+    \begin{align*}
+        \psi (a) &= e' = \psi (e) \\
+        \psi (a) &= \psi (e)
+    \end{align*}
+    \qquad Luego, como \( \psi  \) es monomorfismo, se tiene que \( a=e \), es decir, \( Ker(\psi ) \subseteq \{e\}   \).
+    \vspace{3mm}
+
+    \( \left( \impliedby \right)  \)
+
+    Supongamos que \( Ker(\psi ) = \{e\} \) y \( \psi  \) homomorfismo.
+
+    Sean \( a,b \in G \) tales que \( \psi (a) = \psi (b) \), luego
+    
+    \begin{align*}
+        \psi (aa^{-1}) &= \psi (a)(\psi (a))^{-1} \\
+                       &= \psi (b)(\psi (a))^{-1} \\
+                       &= \psi (ba^{-1}) \\
+                       &= e' \\
+                       &\iff \\
+        ba^{-1} &= e  \tag{por hipótesis} \\
+        b &= a
+    \end{align*}
+    Así, \( \psi  \) es monomorfismo.  \( \hfill \blacksquare \)
+
+\end{proof}
+
+\subsection*{Problemas pag. 73 Hernstein}
+\subsection*{1} 
+\begin{itemize}
+    \item[a)] Si es homomorfismo y \( Ker(\varphi) = \{\text{todos los múltiplos de \( n \)}\}  \).
+
+        No es 1-1, ya que \( \varphi (0) = [0] \) y \( \varphi (n) = [0]\), pero \( 0 \neq n \).
+
+        Si es sobreyectiva, ya que todas las clases de equivalencia en \( \mathbb{Z}_{n} \) tienen al menos
+        un representante en \( \mathbb{Z} \).
+
+    \item[b)] No es un homomorfismo. \( \varphi (a b) = \varphi (b) \varphi (a) \).
+
+    \item[c)] Si es un homomorfismo, ya que es el caso (b) pero conmutativo.
+
+        Si es 1-1, ya que \( a^{-1} = b^{-1} \iff a = b \).
+
+        Es sobreyectivo porque todo elemento en un grupo tiene su inverso en el mismo grupo.
+
+    \item[d)] Si es homomorfismo
+
+        \begin{equation*}
+            \varphi (p \cdot q) = 
+            \begin{cases}
+                1  \text{si } pq > 0\\
+                -1
+            \end{cases}
+            \text{pero esto }
+        \end{equation*}
+\end{itemize}
+
+\end{document}

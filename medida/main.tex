@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[a4paper,
+            bindingoffset=0.2in,
+            left=1in,
+            right=1in,
+            top=1in,
+            bottom=1in,
+            footskip=.25in]{geometry}
+\newtheorem{theorem}{Teorema}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewenvironment{proof}{{\bfseries Dem:}}
+
+\title{Ejercicios}
+\author{Josè Hernàndez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Practica 4}
+
+\subsection*{Ejercicio 1} \hfill
+
+Sea \( f \colon X \to \mathbb{R} \) y \( \mathcal{C} \subset \mathcal{B}(\mathbb{R}) \) una clase de subconjuntos
+que genera a \( \mathcal{B}(\mathbb{R}) \). Demuestre que \( f \) es medible si, y solo si,
+\( f^{-1}(\mathcal{C}) \subseteq \mathcal{A} \).
+\bigskip
+
+\begin{proof}
+
+   \( \left( \implies \right)  \) \\
+   Sea \( f \) medible. Sabemos que, para todo \( A \in \mathcal{B}(\mathbb{R}) \),
+   \( f^{-1}(A) \in \mathcal{A} \).\\
+   Sea \( B \in f^{-1}(\mathcal{C}) \), entonces existe \( C \in \mathcal{C} \) tal que 
+   \( B = f^{-1}(C) \), pero como \( \mathcal{C} \subseteq \mathcal{B}(\mathbb{R}) \), \( C \in \mathcal{B}(\mathbb{R}) \)
+   es decir, \( B = f^{-1}(C) \in \mathcal{A} \), para todo \( B \in f^{-1}(\mathcal{C}) \), asì, 
+   \( f^{-1}(\mathcal{C}) \subseteq \mathcal{A}\). 
+
+   \( \left( \impliedby \right) \) \\
+   Supongamos que \( f^{-1}(\mathcal{C}) \subseteq \mathcal{A} \), queremos ver que 
+   \( \forall B \in \mathcal{B}(\mathbb{R}) \), \( f^{-1}(B) \in \mathcal{A} \) (\( f \) es medible).\\
+   Sea \( M = \{B \in \mathcal{B}(\mathbb{R}) \mid f^{-1}(B) \in \mathcal{A}\}   \), es claro que
+   \( M \subseteq \mathcal{B}(\mathbb{R}) \). Notemos que \( \mathcal{C} \subseteq M \) por
+   consecuencia de la hipotesis,
+   si \( M \) es una \( \sigma -algebra \) entonces, \( \mathcal{B}(\mathbb{R}) = \sigma (\mathcal{C}) \subseteq M \),
+   haciendo que \( M = \mathcal{B}(\mathbb{R}) \), obteniendo el resultado. Veamos que \( M \) es una \( \sigma -algebra \)
+
+    1) Notemos que \( f^{-1}(\mathbb{R}) = X \in \mathcal{A} \)
+
+    2) Sea \( A \in M \), \( f^{-1}(A^{c}) = (f^{-1}(A))^{c} \in \mathcal{A} \), y como 
+    \( A^{c} \in \mathcal{B}(\mathbb{R}) \), \( A^{c} \in M \)
+
+    3) Sea \( \{A_n\} \subseteq M \), queremos ver que \( \bigcup_{n = 1}^{\infty}{A_n} \in M \).
+    \( f^{-1}(\bigcup_{n = 1}^{\infty}{A_n}) = \bigcup_{n = 1}^{\infty}{f^{-1}(A_n)} \in \mathcal{A} \),
+    y como \(  \bigcup_{n = 1}^{\infty}{A_n} \in \mathcal{B}(\mathbb{R})\), \( \bigcup_{n = 1}^{\infty}{A_n} \in M\)
+
+    Asi, hemos visto que \( M \) es una \( \sigma -algebra \), por lo que se obtiene el resultado buscado.
+    \( \hfill \blacksquare \)
+
+\end{proof}
+
+
+
+
+
+\clearpage
+
+\subsection*{Ejercicio 2}
+\bigskip
+
+\begin{proof}
+
+    (a) Sea \( B \in \mathcal{B}(\mathbb{R}) \),
+
+    \begin{equation*}
+        h^{-1}(B) = 
+        \begin{cases}
+            h^{-1}(\{\alpha \} ) & \text{si \( \alpha \in B \)} \\
+            \emptyset & \text{si no}
+        \end{cases}
+    \end{equation*}
+
+    pero, como \( h^{-1}(\{\alpha \}  ) = X \), se cumple que, en cada caso,
+    \( h^{-1}(B) \in \mathcal{A} \) 
+    \bigskip
+
+    (b) Sea \( a \in \mathbb{R} \), usando el Ejercicio 1, sabemos que 
+    \( \mathcal{C} = \{(-\infty, a) \mid a \in \mathbb{R}\} \) es una clase generadora de \( \mathcal{B}(\mathbb{R}) \),
+    entonces \( f+g \) sera borel-medible sii, \( (f+g)^{-1}(\mathcal{C}) \in \mathcal{A} \). Veamos lo sig.
+    \begin{align*}
+        (f+g)^{-1}(-\infty,a) &= \{x \in X \mid f(x)+g(x) < a \}  \\
+                              &= \{x \in X \mid f(x) < a-g(x)\}  
+    \end{align*}
+    \begin{align*}
+        f(x) < a - g(x) &\iff \exists q \in \mathbb{Q} \text{ tq } f(x) < q < a - g(x) \\
+                        &\iff f(x) < q \text{ y } q < a - g(x) \\
+                        &\iff \exists q \in \mathbb{Q} \text{ tq } x \in \{x \in X \mid  f(x) < q\} \cap \{x \in X \mid q <a -g(x)\}    
+    \end{align*}
+
+    De donde,
+
+    \begin{align*}
+        (f+g)^{-1}(-\infty,a) &= \bigcup_{q \in \mathbb{Q}} \{x \in X \mid  f(x) < q\} \cap \{x \in X \mid q <a -g(x)\} \\
+                              &= \bigcup_{q \in \mathbb{Q}} f^{-1}(-\infty,q) \cap g^{-1}(-\infty, a-q)
+    \end{align*}
+
+    Luego, como \( f \) y \( g \) son medibles, \( f^{-1}(-\infty,q) , g^{-1}(-\infty, a-q) \in \mathcal{A}\), por lo tanto, como \( \mathbb{Q} \) es numerable,
+    \(  (f+g)^{-1}(-\infty,a) \in \mathcal{A}\), asi, \( f+g \) es medible.
+    \bigskip
+
+    (c) Por el mismo argumento que en la parte (b), veamos \( (\alpha f^{-1})(-\infty,a) \), \( a \in \mathbb{R} \).
+    Tenemos dos casos,
+
+    1) Si \( \alpha = 0 \), \( \alpha f = 0 \), \(  (\alpha f^{-1})(-\infty,a) = \{x \in X \mid 0 < a\}  \)
+    \begin{align*}
+        (\alpha f^{-1})(-\infty,a) &= \{x \in X \mid 0 < a\} \\ 
+                                   &= 
+                                   \begin{cases}
+                                       X & \text{si } a > 0 \\
+                                       \O & \text{si } a \le 0
+                                   \end{cases}
+    \end{align*}
+    En cualquier caso, \( (\alpha f^{-1})(-\infty,a) \in \mathcal{A} \)
+
+    2) Si \( \alpha \neq 0 \),
+    \begin{align*}
+        (\alpha f^{-1})(-\infty,a) &= \{x \in X \mid \alpha f(x) < a\} \\
+                                   &= \{x \in X \mid  f(x) < \frac{a}{\alpha}\} \\
+                                   &= f^{-1}(-\infty, \frac{a}{\alpha})  
+    \end{align*}
+    Luego, como \( f \) es medible, se concluye que \( (\alpha f^{-1})(-\infty,a) \in \mathcal{A} \), y asi,
+    \( \alpha f \) es medible.
+    \bigskip
+
+    (g) Notemos que 
+    \begin{align*}
+        (max \{f,g\}^{-1}) (-\infty,a) &= \{x \in X \mid f(x) < a\} \cup \{x \in X \mid g(x) < a\} \\
+                                       &= f^{-1}(-\infty,a) \cup g^{-1}(-\infty,a) \in \mathcal{A}
+    \end{align*}
+
+    De donde, \( max \{f,g\} \) es medible.
+
+    Es analogo para \( min \{f,g\} \), ya que \( \mathcal{A} \) es cerrado bajo intersecciones numerables.
+    \bigskip
+
+    (h) Podemos definir \( f^+ \) como \( max \{f,0\} \), de donde, usando el ejercicio (g), se obtiene el resultado.
+    
+    Analogamente para \( f^- = min \{f,0\}   \).
+
+
+\end{proof}
+
+
+\end{document}
